@@ -1,0 +1,79 @@
+<!-- Sidebar for navigation -->
+<div class="sidebar">
+  <div class="logo-details">
+    <!-- Icon and logo name -->
+    <div class="profile" id="background"
+      [style.backgroundImage]="'url(' + (open ? userinfo.backgroundPic? userinfo.backgroundPic : '../../../assets/background-picture.jpg' : '') + ')'">
+      <!-- Profile section -->
+      <div class="profile-details">
+        <img class=" userpicture" [src]="userinfo.profilePic || 'assets/default-profile-picture.jpg' "
+          alt="profileImg" />
+        <div class="userName">
+          <div class="name">{{ userinfo.userName || 'user name' }}</div>
+        </div>
+      </div>
+    </div>
+    <i class="bx bx-menu" id="btn" (click)="toggleSidebar()"></i>
+    <!-- Menu button to toggle sidebar -->
+  </div>
+  <ul class="nav-list">
+    <!-- List of navigation items -->
+    <li>
+      <button routerLink="/home">
+        <a>
+          <i class="bi bi-house"></i>
+          <span class="links_name">Home</span>
+        </a>
+      </button>
+      <span class="tooltip">Home</span>
+    </li>
+    <li>
+      <button routerLink="/bookmark">
+        <a>
+          <i class="bi bi-bookmarks"></i>
+          <span class="links_name">Bookmark</span>
+        </a>
+      </button>
+      <span class="tooltip">Bookmark</span>
+    </li>
+    <li>
+      <button routerLink="/folders">
+        <a>
+          <i class="bx bx-folder"></i>
+          <span class="links_name">Folders</span>
+        </a>
+      </button>
+      <span class="tooltip">Folders</span>
+    </li>
+
+    <!-- <li>
+      <button routerLink="/sign">
+        <a>
+          <i class="bx bx-user"></i>
+          <span class="links_name">User</span>
+        </a>
+      </button>
+      <span class="tooltip">User</span>
+    </li> -->
+
+    <li>
+      <button routerLink="/settings">
+        <a>
+          <i class="bx bx-cog"></i>
+          <span class="links_name">Settings</span>
+        </a>
+      </button>
+      <span class="tooltip">Settings</span>
+    </li>
+
+    <li class="logout">
+      <button (click)="logout()">
+        <div class="logout-details">
+          <div class="name">Logout</div>
+        </div>
+        <i class="bx bx-log-out" id="log_out"></i>
+      </button>
+      <span class="tooltip">Logout</span>
+    </li>
+  </ul>
+</div>

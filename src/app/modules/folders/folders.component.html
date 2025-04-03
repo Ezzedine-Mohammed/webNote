@@ -1,0 +1,186 @@
+<div class="main">
+
+    <div class="title-contanier">
+        <hr>
+        <span class="title" id="folder-title">Folders</span>
+    </div>
+
+    <div class="folder-row row ">
+        <div class="folder-contanier col-10 col-sm-8 col-md-7 col-lg-6" tabindex="0"
+            *ngFor="let folder of folders; let i = index" (mouseleave)="hideFolderSettings(i)">
+            <div class="folder" (dblclick)="fetchNotes(folder)" title="{{folder}}">
+                <span class="folder-name">{{folder}}</span>
+                <div class="folder-buttons">
+                    <button title="settings" class="folder-settings">
+                        <h4 class="settings-icon" (click)="showFolderSetting(i)"> ⋮ </h4>
+                        <ul class="ul-settings">
+                            <li>
+                                <button title="delete" class="delete" (click)="deleteFolder(folder)">
+                                    <span>Delete</span>
+                                </button>
+                            </li>
+                            <hr>
+                            <li>
+                                <button title="edit" class="edit" (click)="renameFolderF(folder)">
+                                    <span>Rename</span>
+                                </button>
+                            </li>
+                            <hr>
+                        </ul>
+                    </button>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="empty" style="padding-inline: 0;" *ngIf=" folders.length == 0 ">
+            there is no folders
+        </div>
+    </div>
+
+    <div class="title-contanier">
+        <hr>
+        <span class="title">{{ selectedFolder || 'Notes' }}</span>
+    </div>
+
+    <div class="row-contanier">
+        <div class="addNote" title="cerate note" (click)="addingNote();clickOutSide()" *ngIf="selectedFolder">+</div>
+        <div class="contanier row data-row">
+            <div class="note-data" *ngFor="let note of notes| search: searchValue; let i = index"
+                (mouseleave)="hideDataSettings(i)">
+                <div class="data-buttons">
+                    <button title="Fullscreen" class="fullscreen" (click)="fullscreen(note)">
+                        <i class="bi bi-fullscreen"></i>
+                    </button>
+                    <button class="data-Settings">
+                        <h4 title="settings" class="data-Icon" (click)="showDataSetting(i)">
+                            ⋮
+                        </h4>
+                        <ul class="ul-Settings">
+                            <li style="padding-top: 5px">
+                                <button (click)="updatingNote(note)">update note</button>
+                            </li>
+                            <hr />
+                            <li>
+                                <button (click)="bookmark(note)">bookmark</button>
+                            </li>
+                            <hr />
+                            <li>
+                                <button (click)="SaddFolder(note)">move</button>
+                            </li>
+                            <hr />
+                            <li>
+                                <button (click)="deleteNote(note)">delete</button>
+                            </li>
+                            <hr />
+                        </ul>
+                    </button>
+                </div>
+                <div class="vertical-hr"></div>
+                <span class="data-title text-truncate">{{ note["title"] }}</span>
+                <div class="hr"></div>
+                <span class="data-date">{{ note["updatedAt"] || note["createdAt"] }}</span>
+                <span class="data-content">{{ note["content"] }}</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="folders.length != 0">
+        <div class="empty" *ngIf=" selectedFolder === '' ">
+            select folder to show notes inside it
+        </div>
+
+        <div class="empty" *ngIf=" notes.length === 0 && selectedFolder !== '' ">
+            there is no notes in this folder
+        </div>
+    </div>
+
+    <div class="warnning" *ngIf="warnning">
+        <span> Folder is not empty </span>
+        <div class="warnning-buttons">
+            <button class="cancel" (click)="cancelwarnning()">cancel</button>
+            <button class="delete" (click)="deleteanyway()">Delete anyway</button>
+        </div>
+
+    </div>
+
+    <div class="notification" *ngIf="popup">
+        {{ popupmassage }}
+    </div>
+
+    <div class="rename-folder" *ngIf="rename">
+        <button class="cancel" (click)="cancelRename()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <span>new folder name</span>
+        <input type="text" class="folder-name" placeholder="folder name" [(ngModel)]="renameFolder" />
+        <button class="save-btn" (click)="renameFolderS()">save</button>
+    </div>
+
+    <div class="contanier fullScreen-row row " *ngIf="fullScreen && selectedNote">
+        <div class="fullScreen col-10 col-sm-8 col-md-7 col-lg-6">
+            <div class="line"></div>
+            <span type="text" class="note-title">{{ selectedNote['title'] }}</span>
+            <hr />
+            <span class="note-date">{{ selectedNote['updatedAt'] || selectedNote['createdAt'] }}</span>
+            <span class="note-content">{{ selectedNote['content'] }}</span>
+            <button class="cancel" (click)="cancelFullscreen()" title="cancel">✘</button>
+
+        </div>
+    </div>
+
+    <div class="contanier row note-row" *ngIf="addNote || updateNote">
+        <div class="form-contanier col-10 col-sm-8 col-md-7 col-lg-6" id="form-adding-note">
+            <div class="line"></div>
+            <form [formGroup]="note" (ngSubmit)="onSubmit(note)" class="note-form">
+                <input type="text" class="note-title" placeholder="Title" formControlName="title" id="add-title" />
+                <hr />
+                <span class="note-date"></span>
+                <textarea class="note-content" formControlName="content" placeholder="Content"
+                    id="add-content"></textarea>
+                <div class="form-buttons">
+                    <button class="cancel" (click)="cancel()" title="cancel">✘</button>
+                    <!-- <button class="settings" title="settings">
+                <h4>...</h4>
+              </button> -->
+                    <button class="save" title="save" type="submit">✔</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="Saddfolder"> <!-- here -->
+        <div class="addFolder col-7 col-sm-6 col-md-4 col-lg-3">
+            <button class="close-btn" (click)="HaddFolder()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="existing-folder">
+                <label>Add to existing folder</label>
+                <div class="show-folders">
+                    <button class="select-button">
+                        <i class="bi bi-caret-left-fill" *ngIf="selectedFolder$ == ''" (click)="showFolders()"></i>
+                        <i class="bi bi-x-circle cancel-selected" *ngIf="selectedFolder$ != ''"
+                            (click)="cancelFolder()"></i>
+                    </button>
+                    <span class="folder-name">{{ hoverdFolder || selectedFolder$ }}</span>
+
+                    <div class="folders" id="folders">
+                        <span class="folder-list" *ngFor="let folder of folders; let i = index"
+                            (mouseenter)="hoverdFolderF(folder)" (mouseleave)="unhoverFolder()"
+                            (click)="slecteFolder(folder)">
+                            {{ folder }}
+                        </span>
+                        <span class="folder-list" *ngIf="folders.length === 0">no folders to show</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-folder">
+                <label for="">or Create new folder</label>
+                <input type="text" class="new-folder-name" id="new-folder-name" [(ngModel)]="newFolder" />
+            </div>
+            <button class="save-folder" (click)="saveFolder()">Save</button>
+        </div>
+    </div>
+
+</div>
+<!-- </div> -->

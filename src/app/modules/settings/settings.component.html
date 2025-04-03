@@ -1,0 +1,73 @@
+<div class="main ">
+    <div class="row setting-row">
+        <div class="sttings-card">
+            <div class="settings-card-header" id="settings-card-header"
+                [style.backgroundImage]="'url(' + (userinfo.backgroundPic ? userinfo.backgroundPic : '../../../assets/background-picture.jpg') + ')'">
+                <img [src]="userinfo.profilePic ? userinfo.profilePic : 'assets/default-profile-picture.jpg'"
+                    alt="user profile picture">
+                <span>{{userinfo.userName || 'user name'}}</span>
+            </div>
+            <div class="settings-card-body">
+                <ul class="settings-list">
+                    <li>
+                        <button type="button" (click)="uploadF()">chnage profile picture</button>
+                    </li>
+                    <hr>
+                    <li>
+                        <button type="button" (click)="uploadBackground()">change background picture</button>
+                    </li>
+                    <hr>
+                    <li>
+                        <button type="button" (click)="ChangeName()">change name</button>
+                    </li>
+                    <hr>
+                    <li>
+                        <button type="button" (click)="verfieEmail()" id="verified-btn">verfied email</button>
+                        <div class="verified" *ngIf="userinfo.emailVerified"></div>
+                    </li>
+                    <hr>
+                    <li>
+                        <button (click)="resetPassword()">reset password</button>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="https://wa.me/972592771230" target="_blank" class='help'>help?</a>
+                    </li>
+                    <hr>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" *ngIf="popup">
+        {{ popupmassage }}
+    </div>
+
+    <div class="row upload-row" *ngIf="upload">
+        <div class="uploadImage-container">
+            <div class="content">
+                <button class="cancel" type="button" (click)="cancelF()">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                <i class="bi bi-image-fill f-icon"></i>
+                <span class="image-title">{{ imageTitle || 'image title' }}</span>
+                <div class="upload-btn-cont">
+                    <i class="bi bi-image-fill s-icon"></i>
+                    <button id="upload-btn" type="button" (click)="uploadImg()">Browse</button>
+                </div>
+                <input type="file" name="" id="fileInput" accept="image/*" (change)="onFileSelected($event)">
+            </div>
+            <button class="save-btn" type="button" (click)="save()">save</button>
+        </div>
+    </div>
+
+    <div class="row name-row" *ngIf="changeName">
+        <div class="name-container">
+            <button class="cancel" type="button" (click)="ChangeName()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <input type="text" placeholder="new name" class="name" id="name" [(ngModel)]="name">
+            <button type="button" (click)="changeNameF()">save</button>
+        </div>
+    </div>
+</div>

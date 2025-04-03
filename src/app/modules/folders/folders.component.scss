@@ -1,0 +1,900 @@
+$neu-1: #ecf0f3;
+$neu-2: hsl(217, 30%, 86%);
+$white: #f9f9f9;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    /* Applying 'Poppins' font globally */
+}
+
+.main {
+    .title-contanier {
+        padding-top: 40px;
+        padding-left: 60px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        hr {
+            opacity: 0.6;
+            width: 100%;
+        }
+
+        .title {
+            background-color: white;
+            position: absolute;
+            top: 23px;
+            font-size: 1.25rem;
+        }
+
+    }
+
+    .folder-row {
+        padding-left: 70px;
+        padding-right: 10px;
+        padding-top: 20px;
+        column-gap: 15px;
+
+        .folder-contanier {
+            min-height: 100px;
+            width: 170px;
+            background-image: url('../../../assets/folder$.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            // overflow: hidden;
+            .folder {
+                text-overflow: ellipsis;
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+                padding-inline: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                position: relative;
+
+                span {
+                    font-size: 1.1rem;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    // height: 28px;
+                    white-space: nowrap;
+                    user-select: none;
+                    padding-right: 5px;
+                    margin-top: 5px;
+
+                }
+
+                .folder-buttons {
+                    position: absolute;
+                    top: 20px;
+                    right: 12px;
+                    display: none;
+                    text-align: end;
+
+                    .folder-settings {
+                        opacity: 0.7;
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                        width: fit-content;
+                        border-top-left-radius: 10px;
+
+
+                        h4 {
+                            padding-inline: 3px;
+                            padding-top: 3px;
+                            width: fit-content;
+                            border-top-left-radius: 10px;
+                            cursor: pointer;
+                            user-select: none;
+                            justify-self: end;
+                            transform: rotate(90deg);
+                        }
+
+
+
+                        ul {
+                            background: #a9cf92e8; //test color
+                            border-radius: 13px;
+                            border-top-right-radius: 0;
+                            display: none;
+                            overflow: hidden;
+                            margin-top: -10px;
+
+                            li {
+                                list-style: none;
+                                cursor: pointer;
+                                opacity: 0.7;
+                                padding-inline: 10px;
+                                position: relative;
+
+                                button {
+                                    border: none;
+                                    outline: none;
+                                    background-color: transparent;
+                                    width: 100%;
+                                    text-align: end;
+                                }
+                            }
+
+                            li:hover {
+                                opacity: 1;
+
+                            }
+
+                            li+hr {
+                                visibility: hidden;
+                                margin-top: -2px;
+                                margin-bottom: 5px;
+                            }
+
+                            li:hover+hr {
+                                visibility: visible;
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .folder:hover>.folder-buttons {
+                display: block;
+            }
+
+        }
+    }
+
+    .folder-contanier:focus {
+        background-image: url('../../../assets/folder-focus.png') !important;
+    }
+
+
+    .row-contanier {
+        padding-left: 60px;
+
+        .addNote {
+            font-size: 50px;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            bottom: 25px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.8;
+    
+        }
+    
+        .addNote:hover {
+            opacity: 1;
+        }
+        .data-row {
+            padding-inline: 40px;
+            padding-block: 20px;
+            row-gap: 25px;
+
+            .note-data {
+                border-radius: 20px;
+                box-shadow: 10px 10px 10px #9b9ea3;
+                background-color: palegoldenrod;
+                padding-block: 2px;
+                height: 180px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+
+
+                .data-buttons {
+                    position: absolute;
+                    top: 9px;
+                    right: 15px;
+                    column-gap: 10px;
+                    display: none;
+
+                    .fullscreen {
+                        background-color: transparent;
+                        outline: none;
+                        border: none;
+                        opacity: 0.7;
+                        position: absolute;
+                        right: 18px;
+                        top: 1px;
+
+                    }
+
+                    .fullscreen:hover {
+                        opacity: 1;
+                    }
+
+                    .data-Settings {
+                        opacity: 0.7;
+                        text-align: end;
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                        cursor: default;
+
+                        h4 {
+                            margin-top: -5px;
+                            padding-inline: 3px;
+                            padding-top: 3px;
+                            width: fit-content;
+                            justify-self: end;
+                            border-top-left-radius: 10px;
+                            cursor: pointer;
+                        }
+
+                        ul{
+                            background: #a9cf92e8; //test color
+                            border-radius: 13px;
+                            border-top-right-radius: 0;
+                            display: none ;
+                            overflow: hidden;
+
+                            li{
+                                list-style: none;
+                                cursor: pointer;
+                                opacity: 0.7;
+                                padding-inline: 10px;
+                                position: relative;
+                                
+                                button{
+                                    border: none;
+                                    outline: none;
+                                    background-color: transparent;
+                                    width: 100%;
+                                    text-align: end;
+                                }
+                            }
+                            li:hover{
+                                opacity: 1;
+                             
+                            }
+                            li + hr{
+                                visibility: hidden;
+                                margin-top: -2px;
+                                margin-bottom: 5px; 
+                            }
+                            li:hover + hr{
+                                visibility: visible;
+                                
+                            }
+                        }
+
+                    }
+
+                }
+
+                .vertical-hr {
+                    width: 180px;
+                    background-color: rgba(0, 0, 0, 0.231372549);
+                    position: absolute;
+                    transform: rotate(90deg);
+                    height: 1px;
+                    left: -75px;
+                }
+
+                .hr {
+                    height: 1px;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.231372549);
+                }
+
+                span {
+                    padding-inline: 20px;
+                    display: block;
+                    width: 100%;
+                }
+
+                .data-title {
+                    font-size: 1.3rem;
+                    font-weight: 400;
+                    white-space: nowrap;
+                    height: 28px;
+
+                }
+
+                .data-date {
+                    font-size: 0.7rem;
+                    margin-top: 2px;
+                }
+
+                .data-content {
+                    font-weight: 200;
+                    padding-left: 20px;
+                    padding-right: 0;
+                    width: 95%;
+                    height: 120px;
+                    text-overflow: ellipsis;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    white-space: pre-wrap;
+                }
+
+                .data-content::-webkit-scrollbar {
+                    width: 5px;
+                }
+
+                .data-content::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                    border-radius: 10px;
+
+                }
+
+                .data-content::-webkit-scrollbar-thumb {
+                    background: #888;
+                    border-radius: 10px;
+
+                }
+
+                .data-content::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+
+                }
+            }
+
+            .note-data:hover>.data-buttons {
+                display: flex;
+            }
+        }
+
+
+    }
+
+    .empty {
+        padding-left: 60px;
+        padding-top: 30px;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .notification {
+        width: fit-content;
+        padding-inline: 20px;
+        height: 80px;
+        text-align: center;
+        position: fixed;
+        justify-self: anchor-center;
+        background-color: #413f57;
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+        box-shadow: 10px 10px 10px #9b9ea3;
+        justify-content: center;
+        color: moccasin;
+        font-weight: 300;
+        font-size: 1.2rem;
+        top: -100px;
+        animation: notification 0.9s ease-in 1 forwards;
+
+        @keyframes notification {
+            100% {
+                top: 50px;
+            }
+        }
+    }
+
+    .warnning {
+        width: fit-content;
+        /* padding-top: 72px; */
+        padding-inline: 40px;
+        height: 150px;
+        text-align: center;
+        position: fixed;
+        top: 35%;
+        left: 35%;
+        background-color: #413f57;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 15px;
+        box-shadow: 10px 10px 10px #9b9ea3;
+        justify-content: center;
+        color: moccasin;
+        font-weight: 300;
+        font-size: 1.2rem;
+        transform: scale(0.5);
+        opacity: 0;
+        animation: warnning 0.2s ease-in 1 forwards;
+
+        @keyframes warnning {
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        span {
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+
+        .warnning-buttons {
+            display: flex;
+            column-gap: 30px;
+            margin-top: 13px;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: moccasin;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid lightsteelblue;
+            box-shadow: inset 2px 2px 4px #404143, inset -2px -2px 4px #2f2c2c;
+        }
+
+        .cancel:hover {
+            background-color: lightsteelblue;
+            color: #413f57;
+        }
+
+        .delete:hover {
+            background-color: lightsteelblue;
+            color: #413f57;
+        }
+    }
+
+    .rename-folder{
+        position: fixed;
+        display: flex;
+        top: 30%;
+        left: 35%;
+        height: 235px;
+        background-color: #ecf0f3;
+        border: 1px solid lightsteelblue;
+        border-radius: 15px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 30px;
+        padding-inline: 20px;
+        box-shadow: 10px 10px 10px #9b9ea3;
+
+        span{
+            position: relative;
+        }
+        button{
+            border: none;
+            background-color: transparent;
+
+        }
+
+        .cancel{
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            
+        }
+
+        input{
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+
+        }
+
+        .save-btn{
+            transform: translateY(13px);
+            padding: 8px;
+            /* background: darkgray; */
+            border-radius: 20px;
+            box-shadow: inset 2px 2px 4px #ffffff, inset -2px -2px 4px  #c1c1c1;
+                }
+
+    }
+
+    .fullScreen-row { 
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        align-self: anchor-center;
+        z-index: 10;
+
+        .line {
+            height: 11px;
+            border-top-left-radius: 12px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #0000003b;
+            width: calc(100% - 35px);
+        }
+
+        .fullScreen {
+            display: flex;
+            flex-direction: column;
+            background-color: $neu-1;
+            box-shadow: 10px 10px 10px $neu-2;
+            border-left: 1px solid #0000003b;
+            border-radius: 12px;
+            border-top-right-radius: 0;
+            height: 400px;
+            padding-inline: 25px;
+            padding-block: 15px;
+            position: relative;
+
+                span {
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: black;
+                    width: 100%;
+                }
+
+                .note-title {
+                    font-size: 2rem;
+                    margin-top: 5px;
+                    text-overflow: ellipsis;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                }
+
+                .note-date{
+                    font-size: 0.7rem;
+                    margin-top: 5px;
+                }
+
+                .note-content {
+                    margin-top: 10px;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: rgba(0, 0, 0, 0.87);
+                    width: 100%;
+                    height: 300px;
+                    text-overflow: ellipsis;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    white-space: pre-wrap;
+                }
+                .note-content::-webkit-scrollbar {
+                    width: 4px;
+                }
+                
+                .note-content::-webkit-scrollbar-track {
+                    background: #dcdee0;
+                    border-radius: 10px;
+                    // overflow: hidden;
+
+                }
+                
+                .note-content::-webkit-scrollbar-thumb {
+                    background: #646566;
+                    border-radius: 10px;
+
+                }
+                
+                .note-content::-webkit-scrollbar-thumb:hover {
+                    background: #4a4a4a;
+
+                }
+                
+                .cancel {
+                    position: absolute;
+                    top: -22px;
+                    right: 0;
+                    background-color: #d9dcdd;
+                    border: 1px solid #0000003b;
+                    border-bottom: none;
+                    
+                    border-top-left-radius: 12px;
+                    border-top-right-radius: 12px;
+                    box-shadow: 10px 2px 15px #c8d0dd;
+                    color: #000000b5;
+                    overflow: hidden;
+                    font-size: 20px;
+                    width: 35px;
+                    height: 32px;
+                    transition: 0.2s;
+                }
+                    
+                .cancel:hover {
+                        color: black;
+                        background-color: rgb(213 105 107);
+                }
+      
+            }
+
+        }
+
+        .note-row {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            width: 100%;
+            align-self: anchor-center;
+            z-index: 10;
+    
+            .line {
+                height: 11px;
+                border-top-left-radius: 12px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #0000003b;
+                width: calc(100% - 70px);
+            }
+    
+            .form-contanier {
+                display: flex;
+                flex-direction: column;
+                background-color: $neu-1;
+                box-shadow: 10px 10px 10px $neu-2;
+                border-left: 1px solid #0000003b;
+                border-radius: 12px;
+                border-top-right-radius: 0;
+                height: 400px;
+                padding-inline: 25px;
+                padding-block: 15px;
+                position: relative;
+    
+                .note-form {
+                    width: 100%;
+                    height: 100%;
+    
+                    input {
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        color: black;
+                        width: 100%;
+                    }
+    
+                    .note-title {
+                        font-size: 2rem;
+                        margin-top: 5px;
+                    }
+    
+                    .note-content {
+                        margin-top: 20px;
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        color: rgba(0, 0, 0, 0.87);
+                        width: 100%;
+                        height: 300px;
+                        resize: none;
+                    }
+    
+                    .form-buttons {
+                        top: -22px;
+                        right: 0;
+                        position: absolute;
+                        width: fit-content;
+                        background-color: #d9dcdd;
+                        height: fit-content;
+                        border-top: 1px solid #0000003b;
+                        border-left: 1px solid #0000003b;
+                        border-top-left-radius: 12px;
+                        border-top-right-radius: 12px;
+                        box-shadow: 10px 2px 15px #c8d0dd;
+                        color: #000000b5;
+                        overflow: hidden;
+    
+                        button {
+                            border: none;
+                            font-size: 20px;
+                            width: 35px;
+                            height: 32px;
+                            transition: 0.2s;
+                            overflow: hidden;
+                        }
+    
+                        .settings{
+                            border-right: 1px solid #0000003b;
+                            
+                            h4{
+                                position: relative;
+                                top: -4px;
+                            }
+                        }
+    
+                        .settings:hover {
+                            color: black;
+                            background-color: rgb(197 198 199);
+                        }
+    
+                        .cancel {
+                            border-right: 1px solid #0000003b;
+                            border-top-left-radius: 12px;
+                        }
+                        
+                        .cancel:hover {
+                            color: black;
+                            background-color: #bb2124c2;
+                        }
+    
+                        .save{
+                            border-top-right-radius: 12px;
+                        }
+    
+                        .save:hover {
+                            color: black;
+                            background-color: #71cd6a;
+                        }
+    
+                    }
+    
+                    
+                }
+    
+            }
+        }
+
+        .addFolder{
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: $neu-1;
+            position: fixed;
+            justify-self: anchor-center;
+            align-self: anchor-center;
+            left: 60px;
+            box-shadow: 10px 10px 10px #9b9ea3;
+            border-radius: 15px;
+            label{
+                display: block;
+                height: 28px;
+            }
+            .close-btn{
+                border: none;
+                background-color: transparent;
+                position: absolute;
+                right: 12px;
+                top: 10px;
+
+            }
+            .existing-folder{
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 10px;
+
+                .show-folders{
+
+                    position: relative;
+                    width: 200px;
+                    height: 28px;
+                    .select-button{
+                        height: fit-content;
+                        width: fit-content;
+                        border: none;
+                        background-color: transparent;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        z-index: 2;
+                    }
+                    span{
+                        display: block;
+                        width: 100%;
+                        height: 28px;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        padding-right: 15px;
+                    }
+                    .folder-name{
+                        border-bottom: 1px solid;
+                        position: absolute ;
+                        top: 0;
+                        
+                    }
+                    .folders{
+                        height: 0px;
+                        display: none;
+                        overflow: hidden;
+                        position: absolute;
+                        top: 28px;
+                        width: 200px;
+                        .folder-list{
+                            background-color: snow;
+                            text-align: left;
+                            padding: 5px;
+                            padding-inline: 10px;
+                            cursor: pointer;
+                        }
+                        .folder-list:hover{
+                            background-color: #9b9ea3;
+                        }
+                    }
+                    
+                }
+
+
+            }
+
+
+            .new-folder{
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 10px;
+
+                .new-folder-name{
+                    width: 200px;
+                    height: 28px;
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    border-bottom: 1px solid;
+
+                }
+            }
+
+            .save-folder{
+                border: none;
+                border-radius: 10px;
+                background-color: transparent;
+                padding: 5px;
+                border-bottom: 2px solid;
+                box-shadow: 0px 5px 10px #9b9ea3;
+            }
+        }
+}
+
+
+@media (min-width: 1024px) {
+    .note-data {
+        flex: 0 0 auto;
+        width: 22%;
+    }
+
+    .data-row {
+        column-gap: 39px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .note-data {
+        flex: 0 0 auto;
+        width: 30%;
+    }
+
+    .data-row {
+        column-gap: 25px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 766px) {
+    .note-data {
+        flex: 0 0 auto;
+        width: 45%;
+    }
+
+    .data-row {
+        column-gap: 50px;
+    }
+
+}

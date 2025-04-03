@@ -1,0 +1,284 @@
+$bg: #EDF2F0;
+
+$neu-1: #ecf0f3;
+$neu-2: #d1d9e6;
+
+$white: #f9f9f9;
+$gray: #a0a5a8;
+$black: #181818;
+
+$purple: #4B70E2;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; /* Applying 'Poppins' font globally */
+    
+  }
+
+  .main{
+    .setting-row{
+        padding-left: 60px;
+        justify-content: center;
+        padding-top: 10px;
+
+    .sttings-card{
+        width: clamp(350px, 50%, 400px);
+        background-color: $neu-1;
+        box-shadow:
+		10px 10px 10px $neu-2,
+		-10px -10px 10px $white;
+        border-radius: 12px;
+        overflow: hidden;
+
+        .settings-card-header{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #575757;
+            height: 210px;
+            row-gap: 5px;
+            padding-top: 10px;
+            background-size: cover; 
+            background-position: center;
+            background-repeat:  no-repeat;
+
+            img{
+                border-radius: 50%;
+                width: 140px;
+                height: 130px;
+                background-repeat: no-repeat; /// تأكد من هاي الهبدة لانه صورة مش background-image
+
+            }
+            span{
+                border-bottom: 1px solid rgb(125 123 123);
+                line-height: 15px;
+                color: white;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 65%;
+            }
+            
+        }
+
+        .settings-card-body{
+            border: 20px solid rgba(0, 0, 0, 0.231372549);
+            border-top: none;
+            border-bottom: 10px solid rgba(0, 0, 0, 0.231372549);
+            ul{
+                padding-inline: 20px;
+                row-gap: 5px;
+                display: flex;
+                flex-direction: column;
+                border-radius: 10px;
+                background-color: #ecf0f3;
+                transform: scalex(1.04);
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                padding-top: 10px;
+
+                li{
+                    list-style: none;
+                    position: relative;
+
+                    button{
+                    all: unset;
+                    cursor: pointer;   
+                    display: inline-block;                     
+                    width: 100%;
+                    }
+
+                    .verified{
+                        height: 20px;
+                        width: 20px;
+                        background-image: url('../../../assets/verified.png');
+                        background-size: cover; 
+                        background-position: center;
+                        background-repeat:  no-repeat;
+                        position: absolute;
+                        right: 10px;
+                        align-self: center;
+                        top: 2px;
+
+                    }
+
+                    .help{
+                        all:unset;
+                        display: block;
+                        width: 100%;
+                        cursor: pointer;
+                    }
+                }
+
+                li+hr {
+                    visibility: hidden;
+                    margin-bottom: 5px;
+                }
+
+                li:hover+hr {
+                    visibility: visible;
+
+                }
+            }
+        }
+    }
+}
+    .upload-row{
+        position: fixed;
+        top: 46%;
+        padding-left: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .uploadImage-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            row-gap: 20px;
+            padding-top: 40px;
+            padding-bottom: 20px;
+            background-color: $neu-1;
+            box-shadow:
+            10px 10px 10px $neu-2,
+            -10px -10px 10px $white;
+            border-radius: 12px;
+            overflow: hidden;
+            width: fit-content;
+            padding-inline: 50px;
+            position: relative;
+            
+            button{
+                all:unset;
+                cursor: pointer;
+            }
+
+            .content{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); 
+                border: 1px solid #ced4da;
+                border-radius: 10px;
+                overflow: hidden;
+
+                input{
+                    display: none;
+                }
+
+                .cancel{
+                    position: absolute;
+                    right: 18px;
+                    top: 10px;
+                }
+
+                .f-icon{
+                    font-size: 20px;
+                    padding: 7px;
+                    border-right: 1px solid #ced4da;
+                    background-color: #c7c9cb96;
+                }
+
+                .image-title{
+                    padding: 10px;
+                    border-right: 1px solid #ced4da; 
+                    width: 300px;
+                    color: rgba(33, 37, 41, 0.75);
+                    user-select: none;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .s-icon{
+                    font-size: 13px;
+                    align-self: center;
+                }
+
+                .upload-btn-cont{
+                    display: flex;
+                    column-gap: 10px;
+                    padding: 10px;
+                    background-color: #413d63;
+                    color: white;
+                }
+            }
+    
+        }
+    }
+    
+    .name-row{
+        position: fixed;
+        top: 46%;
+        padding-left: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .name-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            row-gap: 20px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            background-color: #ecf0f3;
+            box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            width: fit-content;
+            padding-inline: 45px;
+            position: relative;
+
+            button{
+                all:unset;
+                cursor: pointer;
+            }
+
+            .cancel{
+                position: absolute;
+                right: 18px;
+                top: 10px;
+            }
+
+            .name{
+                outline: none;
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid rgb(125 123 123);
+            }
+
+        }
+    }
+    .notification {
+        width: fit-content;
+        padding-inline: 20px;
+        height: 80px;
+        text-align: center;
+        position: fixed;
+        // align-self: anchor-center;
+        justify-self: anchor-center;
+        background-color: #413f57;
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+        box-shadow: 10px 10px 10px #9b9ea3;
+        justify-content: center;
+        color: moccasin;
+        font-weight: 300;
+        font-size: 1.2rem;
+        top: -100px;
+        animation: notification 0.9s ease-in 1 forwards;
+
+        @keyframes notification {
+            100% {
+                top: 50px;
+            }
+        }
+    }
+}

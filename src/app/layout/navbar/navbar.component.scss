@@ -1,0 +1,115 @@
+/* Importing */
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap";
+@import 'bootstrap-scss/bootstrap';
+
+
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  /* Applying 'Poppins' font globally */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 43%);
+  height: 50px;
+  background-color: #ECECEC;
+  transform: translateY(-23px);
+}
+
+.navbar-brand {
+  cursor: default;
+  .logo{
+    height: 35px;
+    width: 35px;
+    opacity: 0.9;
+  }
+}
+
+
+#wrap {
+  display: inline-flex;
+  position: relative;
+
+  padding-right: 10px;
+
+  .search-bar {
+    width: 30px;
+    opacity: 0;
+    background: transparent;
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 33px;
+    bottom: -18px;
+    z-index: 5;
+    padding-bottom: 4px !important;
+    font-weight: 300;
+    margin-right: 1ch !important;
+    cursor: pointer;
+    transition: width 0.4s cubic-bezier(0.000, 0.795, 0.000, 1.000), opacity 0.4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+    animation:show 0.4s cubic-bezier(0.000, 0.795, 0.000, 1.000) 0s 1 forwards;
+  @keyframes show {
+    0% {
+      display:block;
+    }
+    100%{
+      width: 21ch;
+      opacity: 0.8;
+      border-bottom: 1px solid #BBB;
+      cursor: text;
+      padding-bottom: 3px !important;
+      box-shadow: 43px 14px 0px -14px #BBB;
+      right: 33px;
+    }
+  }
+    // &:focus {
+    //   width: 21ch;
+    //   opacity: 0.8;
+    //   border-bottom: 1px solid #BBB;
+    //   cursor: text;
+    //   padding-bottom: 3px !important;
+    //   box-shadow: 43px 14px 0px -14px #BBB;
+    //   right: 33px;
+    // }
+
+
+  }
+
+  // .search-bar:focus ~ .search-btn{
+  //   z-index: 10;
+  //   pointer-events: auto;
+  // }
+
+  .search-btn {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px !important;
+    float: right;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: -16px;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+    background: transparent;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
